@@ -3,9 +3,9 @@
     <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         
-        <span class="logo-mini"></span>
+        <span class="logo-mini">GR</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b></b></span>
+        <span class="logo-lg"><b>{{config('app.name')}}</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -21,7 +21,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ url(auth()->user()->foto ?? '') }}" class="user-image img-profil"
                             alt="User Image">
-                        <span class="hidden-xs"></span>
+                        <span class="hidden-xs">{{ auth()->user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -39,8 +39,7 @@
                                 <a href="" class="btn btn-default btn-flat">Profil</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat"
-                                    onclick="$('#logout-form').submit()">Keluar</a>
+                                <a href="#" class="btn btn-default btn-flat" onclick="$('#logout-form').submit()">Keluar</a>
                             </div>
                         </li>
                     </ul>
@@ -50,6 +49,6 @@
     </nav>
 </header>
 
-<form action="" method="post" id="logout-form" style="display: none;">
+<form action="{{ route('logout') }}" method="post" id="logout-form" style="display: none;">
     @csrf
 </form>
