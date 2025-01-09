@@ -40,16 +40,77 @@
         table = $('.table').DataTable({
             processing: true,
             autoWidth : false,
-            // ajax : {
-            //     url: '{{route('categoris.data')}}'
-            // }
+            ajax : {
+                url: '{{route('categoris.data')}}'
+            },
+            columns: [
+                {data : 'DT_RowIndex', searchable : false, sortable : false},
+                {data : 'categori_name'},
+                {data : 'action', searchable : false, sortable : false, class: 'text-center'},
+            ]
         });
+
+        //membuat allert with validator
+        $('#modal-form').validator().on('submit', function (e) {
+            if (! e.preventDefault()) {
+                $.post( $('#modal-form form').attr('action'), $('#modal-form form').serialize())
+                .done((response) => {
+                    $('#modal-form').modal('hide');
+                    table.ajax.reload();
+                }) 
+                .fail((errors) => {
+                    alert('Tidak dapat menyimpan data');
+                    return;
+                });
+            }
+        })
     });
 
-    //memanggil modal
-    function addForm(){
+    //memanggil modal add
+    function addForm(url){
         $('#modal-form').modal('show');
         $('#modal-form .modal-title').text('Tambah Kategori');
+
+        $('#modal-form form')[0].reset();
+        $('#modal-form form').attr('action', url);
+        $('#modal-form [name=_method]').val('post');
+        $('#modal-form [name=categori_name]').focus();
+    }
+
+    //memanggil modal edit
+    function editForm(url){
+        $('#modal-form').modal('show');
+        $('#modal-form .modal-title').text('Edit Kategori');
+
+        $('#modal-form form')[0].reset();
+        $('#modal-form form').attr('action', url);
+        $('#modal-form [name=_method]').val('put');
+        $('#modal-form [name=categori_name]').focus();
+
+        $.get(url)
+            .done((response) => {
+                $('#modal-form [name=categori_name]').val(response.categori_name);
+            })
+            .fail((erors) => {
+                alert('Tidak dapat menampilkan data');
+                return;
+            });
+    }
+
+    function deleteData(url){
+        if (confirm('Yakin ingin menghapus data..?')) {
+            $.post(url, {
+                '_token' : $('[name=csrf-token').attr('content'),
+                '_method' : 'delete'
+            })
+            .done((response) => {
+                table.ajax.reload();
+            })
+            .fail((errors) => {
+                alert('Tidak dapat menghapus data');
+                return;
+            });
+        }
     }
 
 </script>
