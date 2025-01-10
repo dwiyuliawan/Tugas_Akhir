@@ -42,9 +42,9 @@ class CategoriController extends Controller
      */
     public function show(string $id)
     {
-        $categori = Categori::find($id);
+        $categories = Categori::find($id);
 
-        return response()->json($categori);
+        return response()->json($categories);
     }
 
     /**
@@ -60,9 +60,9 @@ class CategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $categoris = Categori::find($id);
-        $categoris->categori_name = $request->categori_name;
-        $categoris->update();
+        $categories = Categori::find($id);
+        $categories->categori_name = $request->categori_name;
+        $categories->update();
 
         return response()->json('Data berhasil di simpan', 200);
     }
@@ -80,16 +80,16 @@ class CategoriController extends Controller
 
     public function data()
     {
-        $categoris = Categori::orderBy('categori_id', 'desc')->get();
+        $categories = Categori::orderBy('categori_id', 'desc')->get();
 
         return datatables()
-            ->of($categoris)
+            ->of($categories)
             ->addIndexColumn()
             ->addColumn('action', function ($categori) {
                 return '
                 <div class="btn-group">
-                    <button onclick="editForm(`'. route('categoris.update', $categori->categori_id) .'`)"  class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
-                    <button onclick="deleteData(`'. route('categoris.destroy', $categori->categori_id) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                    <button onclick="editForm(`'. route('categories.update', $categori->categori_id) .'`)"  class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
+                    <button onclick="deleteData(`'. route('categories.destroy', $categori->categori_id) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })

@@ -23,7 +23,7 @@
                         <div class="col-lg-6">
                             <select name="categori_id" id="categori_id" class="form-control" required>
                                 <option value="">Pilih Kategori</option>
-                                @foreach ($categoris as $key => $item)
+                                @foreach ($categories as $key => $item)
                                 <option value="{{ $key }}">{{ $item }}</option>
                                 @endforeach
                             </select>

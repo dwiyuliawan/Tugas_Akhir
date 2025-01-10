@@ -24,7 +24,7 @@
 
             <li class="header">MASTER</li>
             <li>
-                <a href="{{route('categoris.index')}}">
+                <a href="{{route('categories.index')}}">
                     <i class="fa fa-cube"></i> <span>Kategori</span>
                 </a>
             </li>

@@ -13,10 +13,11 @@ Route::get('/', fn () => redirect()->route('login'));
 
 //route setelah login
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/categoris/data', [CategoriController::class, 'data'])->name('categoris.data');
-    Route::resource('/categoris', CategoriController::class);
+    Route::get('/categories/data', [CategoriController::class, 'data'])->name('categories.data');
+    Route::resource('/categories', CategoriController::class);
 
     Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
     Route::post('/products/delete-selected', [ProductController::class, 'deleteSelected'])->name('products.delete_selected');
+    Route::post('/products/cetak-barcode', [ProductController::class, 'cetakBarcode'])->name('products.cetak_barcode');
     Route::resource('/products', ProductController::class);
 });

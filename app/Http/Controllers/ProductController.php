@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Categori;
+use PDF;
 use App\Models\Product;
+use App\Models\Categori;
+use Milon\Barcode\DNS1D;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -14,8 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categoris = Categori::all()->pluck('categori_name', 'categori_id');
-        return view('product.index', compact('categoris'));
+        $categories = Categori::all()->pluck('categori_name', 'categori_id');
+        return view('product.index', compact('categories'));
     }
 
     /**
@@ -81,7 +83,7 @@ class ProductController extends Controller
 
     public function data()
     {
-        $products = Product::leftJoin('categoris', 'categoris.categori_id', 'products.product_id')
+        $products = Product::leftJoin('categories', 'categories.categori_id', 'products.product_id')
             ->select('products.*', 'categori_name')
             // ->orderBy('kode_produk', 'asc')
             ->get();
@@ -126,5 +128,20 @@ class ProductController extends Controller
         }
 
         return response(null, 204);
+    }
+
+    public function cetakBarcode(Request $request)
+    {
+        $dataproduct = array();
+        foreach ($request->product_id as $id) {
+            $products = Product::find($id);
+            $dataproduct[] = $products;
+        }
+        $barcode = new DNS1D();
+
+        $no  = 1;
+        $pdf = PDF::loadView('product.barcode', compact('dataproduct', 'no','barcode'));
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('products.pdf');
     }
 }

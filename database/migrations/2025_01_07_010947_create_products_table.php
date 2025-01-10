@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->timestamps();
 
-            $table->foreign('categori_id')->references('categori_id')->on('categoris')->onUpdate('restrict')->onDelete('restrict');
+            $table->foreign('categori_id')->references('categori_id')->on('categories')->onUpdate('restrict')->onDelete('restrict');
         });
     }
 
