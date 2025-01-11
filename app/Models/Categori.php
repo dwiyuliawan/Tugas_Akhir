@@ -10,5 +10,4 @@ class Categori extends Model
     protected $primaryKey = 'categori_id';
     protected $guarded = [];
 
-    protected $fillable = ['categori_name'];
 }
