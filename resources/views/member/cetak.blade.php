@@ -13,7 +13,7 @@
             
         }
         .card {
-            width: 85.60mm;
+            width: 100.60mm;
             height: 100%;
             position: relative;
             background: #f5f5f5; /* Gambar kartu bisa ditambahkan di sini */
