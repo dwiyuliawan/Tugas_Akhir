@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="categori_name" class="col-lg-2 col-lg-offset-1 control-label">Kategori</label>
+                        <label for="categori_name" class="col-lg-2 col-lg-offset-1 control-label">Categori</label>
                         <div class="col-lg-6">
                             <input type="text" name="categori_name" id="categori_name" class="form-control" required autofocus>
                             <span class="help-block with-errors"></span>
@@ -20,8 +20,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Simpan</button>
-                    <button type="button" class="btn btn-sm btn-flat btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
+                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Save</button>
+                    <button type="button" class="btn btn-sm btn-flat btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Cancel</button>
                 </div>
             </div>
         </form>

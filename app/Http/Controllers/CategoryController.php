@@ -4,75 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Categori;
+use App\Models\Category;
 
-class CategoriController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('categori.index');
+        return view('category.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         // $categoris = new Categori();
         // $categoris->categori_name = $request->categori_name;
         // $categoris->save();
-        Categori::create($request->all());
+        Category::create($request->all());
 
         return response()->json('Data berhasil di simpan', 200);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        $categories = Categori::find($id);
+        $categories = Category::find($id);
 
         return response()->json($categories);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        $categories = Categori::find($id);
+        $categories = Category::find($id);
         $categories->categori_name = $request->categori_name;
         $categories->update();
 
         return response()->json('Data berhasil di simpan', 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        $categoris = Categori::find($id);
+        $categoris = Category::find($id);
         $categoris->delete();
 
         return response(null, 204);
@@ -80,7 +49,7 @@ class CategoriController extends Controller
 
     public function data()
     {
-        $categories = Categori::orderBy('categori_id', 'desc')->get();
+        $categories = Category::orderBy('categori_id', 'desc')->get();
 
         return datatables()
             ->of($categories)

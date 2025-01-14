@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
- Kategori
+ Categori
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Kategori</li>
+    <li class="active">Categori</li>
 @endsection
 
 @section('content')
@@ -14,13 +14,13 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-header with-border">
-                <button onclick="addForm('{{ route('categories.store') }}')" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i> Tambah</button>
+                <button onclick="addForm('{{ route('categories.store') }}')" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i>Add Categori</button>
             </div>
             <div class="box-body table-responsive">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th width="5%">No</th>
-                        <th>Kategori</th>
+                        <th>Categori</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-@includeIf('categori.form')
+@includeIf('category.form')
 @endsection
 
 @push('scripts')

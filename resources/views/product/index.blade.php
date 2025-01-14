@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar Produk
+    List Product
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Daftar Produk</li>
+    <li class="active">Product</li>
 @endsection
 
 @section('content')
@@ -15,9 +15,9 @@
         <div class="box">
             <div class="box-header with-border">
                 <div class="btn-group">
-                    <button onclick="addForm('{{ route('products.store') }}')" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i> Tambah</button>
-                    <button onclick="deleteSelected('{{ route('products.delete_selected') }}')"  class="btn btn-danger btn-xs btn-flat"><i class="fa fa-trash"></i> Hapus</button>
-                    <button onclick="cetakBarcode('{{ route('products.cetak_barcode') }}')" class="btn btn-info btn-xs btn-flat"><i class="fa fa-barcode"></i> Cetak Barcode</button>
+                    <button onclick="addForm('{{ route('products.store') }}')" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i>Add Product</button>
+                    <button onclick="deleteSelected('{{ route('products.delete_selected') }}')"  class="btn btn-danger btn-xs btn-flat"><i class="fa fa-trash"></i>Delete</button>
+                    <button onclick="cetakBarcode('{{ route('products.cetak_barcode') }}')" class="btn btn-info btn-xs btn-flat"><i class="fa fa-barcode"></i>Print Barcode</button>
                 </div>
             </div>
             <div class="box-body table-responsive">
@@ -29,14 +29,14 @@
                                 <input type="checkbox" name="select_all" id="select_all">
                             </th>
                             <th width="5%">No</th>
-                            <th>Kode</th>
-                            <th>Nama</th>
-                            <th>Kategori</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Categori</th>
                             <th>Merk</th>
-                            <th>Harga Beli</th>
-                            <th>Harga Jual</th>
-                            <th>Diskon</th>
-                            <th>Stok</th>
+                            <th>Purchase Price</th>
+                            <th>Sale Price</th>
+                            <th>Discount</th>
+                            <th>Stock</th>
                             <th width="15%"><i class="fa fa-cog"></i></th>
                         </thead>
                     </table>

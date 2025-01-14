@@ -16,14 +16,14 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>Kategori </h3>
+                <h3>Categori</h3>
 
-                <p>Total Kategori</p>
+                <p>Total Categori</p>
             </div>
             <div class="icon">
                 <i class="fa fa-cube"></i>
             </div>
-            <a href="" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -33,12 +33,12 @@
             <div class="inner">
                 <h3>Produck</h3>
 
-                <p>Total Produk</p>
+                <p>Total Product</p>
             </div>
             <div class="icon">
                 <i class="fa fa-cubes"></i>
             </div>
-            <a href="" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -53,7 +53,7 @@
             <div class="icon">
                 <i class="fa fa-id-card"></i>
             </div>
-            <a href="" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -68,7 +68,7 @@
             <div class="icon">
                 <i class="fa fa-truck"></i>
             </div>
-            <a href="" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -79,7 +79,7 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Grafik Pendapatan</h3>
+                <h3 class="box-title">Income Graph</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

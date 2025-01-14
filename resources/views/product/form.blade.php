@@ -12,17 +12,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="product_name" class="col-lg-2 col-lg-offset-1 control-label">Nama</label>
+                        <label for="product_name" class="col-lg-2 col-lg-offset-1 control-label">Name</label>
                         <div class="col-lg-6">
                             <input type="text" name="product_name" id="product_name" class="form-control" required autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="categori_id" class="col-lg-2 col-lg-offset-1 control-label">Kategori</label>
+                        <label for="categori_id" class="col-lg-2 col-lg-offset-1 control-label">Categori</label>
                         <div class="col-lg-6">
                             <select name="categori_id" id="categori_id" class="form-control" required>
-                                <option value="">Pilih Kategori</option>
+                                <option value="">Select Categori</option>
                                 @foreach ($categories as $key => $item)
                                 <option value="{{ $key }}">{{ $item }}</option>
                                 @endforeach
@@ -38,28 +38,28 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="purchase_price" class="col-lg-2 col-lg-offset-1 control-label">Harga Beli</label>
+                        <label for="purchase_price" class="col-lg-2 col-lg-offset-1 control-label">Purchase Price</label>
                         <div class="col-lg-6">
                             <input type="number" name="purchase_price" id="purchase_price" class="form-control" required>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="sale_price" class="col-lg-2 col-lg-offset-1 control-label">Harga Jual</label>
+                        <label for="sale_price" class="col-lg-2 col-lg-offset-1 control-label">Sale Price</label>
                         <div class="col-lg-6">
                             <input type="number" name="sale_price" id="sale_price" class="form-control" required>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="discount" class="col-lg-2 col-lg-offset-1 control-label">Diskon</label>
+                        <label for="discount" class="col-lg-2 col-lg-offset-1 control-label">Discount</label>
                         <div class="col-lg-6">
                             <input type="number" name="discount" id="discount" class="form-control" value="0">
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="stock" class="col-lg-2 col-lg-offset-1 control-label">Stok</label>
+                        <label for="stock" class="col-lg-2 col-lg-offset-1 control-label">Stock</label>
                         <div class="col-lg-6">
                             <input type="number" name="stock" id="stock" class="form-control" required value="0">
                             <span class="help-block with-errors"></span>
@@ -67,8 +67,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Simpan</button>
-                    <button type="button" class="btn btn-sm btn-flat btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
+                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Save</button>
+                    <button type="button" class="btn btn-sm btn-flat btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i>Cancel</button>
                 </div>
             </div>
         </form>

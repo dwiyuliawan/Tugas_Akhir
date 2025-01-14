@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use App\Models\Product;
-use App\Models\Categori;
+use App\Models\Category;
 use Milon\Barcode\DNS1D;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categories = Categori::all()->pluck('categori_name', 'categori_id');
+        $categories = Category::all()->pluck('categori_name', 'categori_id');
         return view('product.index', compact('categories'));
     }
 
@@ -83,7 +83,7 @@ class ProductController extends Controller
 
     public function data()
     {
-        $products = Product::leftJoin('categories', 'categories.categori_id', 'products.product_id')
+        $products = Product::leftJoin('categories', 'categories.categori_id', 'products.categori_id')
             ->select('products.*', 'categori_name')
             // ->orderBy('kode_produk', 'asc')
             ->get();

@@ -1,68 +1,63 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cetak Kartu Member</title>
+    <title>Print Member Card</title>
 
     <style>
         .box {
             position: relative;
-            overflow: hidden;
-            
         }
         .card {
-            width: 100.60mm;
-            height: 100%;
-            position: relative;
-            background: #f5f5f5; /* Gambar kartu bisa ditambahkan di sini */
+            width: 85.60mm;
         }
         .logo {
             position: absolute;
-            top: 10px;
-            right: 136px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: #fff;
+            top: 3pt;
+            right: 0pt;
+            font-size: 16pt;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #fff !important;
         }
         .logo p {
-            position: absolute;
-            text-align: left;
-            margin-right: 10pt;
+            text-align: right;
+            margin-right: 16pt;
         }
         .logo img {
-            width: 80px;
-            height: 80px;
+            position: absolute;
+            margin-top: -5pt;
+            width: 50px;
+            height: 50px;
+            right: 16pt;
         }
         .nama {
             position: absolute;
-            top: 80px;
-            right: 40px;
+            top: 100pt;
+            right: 16pt;
             font-size: 12pt;
             font-family: Arial, Helvetica, sans-serif;
             font-weight: bold;
-            color: #fff;
+            color: #fff !important;
         }
         .telepon {
             position: absolute;
-            top: 110px;
-            right: 40px;
-            font-size: 10pt;
-             color: #fff;
+            margin-top: 120pt;
+            right: 16pt;
+            color: #fff;
         }
         .barcode {
             position: absolute;
-            top: 65pt;
+            top: 105pt;
             left: .860rem;
             border: 1px solid #fff;
-            background: white;
+            padding: .5px;
+            background: #fff;
         }
-        .barcode img {
-
-        }
-
         .text-left {
             text-align: left;
         }
@@ -81,15 +76,16 @@
                 <tr>
                     @foreach ($data as $item)
                         <td class="text-center">
-                            <div class="box">
-                                <img src="{{ public_path($setting->path_member_card) }}" alt="card" width="90%">
+                            <div class="box" width="50%">
+                                <img style="padding-top: 50px" src="{{ public_path($setting->path_member_card) }}" alt="card" width="100%">
                                 <div class="logo">
+                                    <p>{{ $setting->company_name }}</p>
                                     <img src="{{ public_path($setting->path_logo) }}" alt="logo">
                                 </div>
                                 <div class="nama">{{ $item->name }}</div>
-                                <div class="telepon" >{{ $item->phone_number }}</div>
+                                <div class="telepon">{{ $item->phone_number }}</div>
                                 <div class="barcode text-left">
-                                    <img src="data:image/png;base64, {{ $barcode->getBarcodePNG("$item->member_code", 'QRCODE') }}" alt="qrcode"
+                                    <img src="data:image/png;base64, {{ DNS2D::getBarcodePNG("$item->member_code", 'QRCODE') }}" alt="qrcode"
                                         height="45"
                                         widht="45">
                                 </div>

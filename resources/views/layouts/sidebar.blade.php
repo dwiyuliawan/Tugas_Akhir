@@ -24,13 +24,13 @@
 
             <li class="header">MASTER</li>
             <li>
-                <a href="{{route('categories.index')}}">
-                    <i class="fa fa-cube"></i> <span>Kategori</span>
+                <a href="{{route('categories.index')}}" >
+                    <i class="fa fa-cube"></i> <span>Categori</span>
                 </a>
             </li>
             <li>
                 <a href="{{route('products.index')}}">
-                    <i class="fa fa-cubes"></i> <span>Produk</span>
+                    <i class="fa fa-cubes"></i> <span>Product</span>
                 </a>
             </li>
             <li>
@@ -45,34 +45,34 @@
             </li>
             <li class="header">TRANSAKSI</li>
             <li>
-                <a href="">
-                    <i class="fa fa-money"></i> <span>Pengeluaran</span>
+                <a href="{{route('expenditures.index')}}">
+                    <i class="fa fa-money"></i> <span>Expenditure</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('purchases.index')}}">
+                    <i class="fa fa-download"></i> <span>Purchase</span>
                 </a>
             </li>
             <li>
                 <a href="">
-                    <i class="fa fa-download"></i> <span>Pembelian</span>
+                    <i class="fa fa-upload"></i> <span>Sale</span>
                 </a>
             </li>
             <li>
                 <a href="">
-                    <i class="fa fa-upload"></i> <span>Penjualan</span>
+                    <i class="fa fa-cart-arrow-down"></i> <span>Active Transaction</span>
                 </a>
             </li>
             <li>
                 <a href="">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
+                    <i class="fa fa-cart-arrow-down"></i> <span>New Transaction</span>
                 </a>
             </li>
             <li class="header">REPORT</li>
             <li>
                 <a href="">
-                    <i class="fa fa-file-pdf-o"></i> <span>Laporan</span>
+                    <i class="fa fa-file-pdf-o"></i> <span>Report</span>
                 </a>
             </li>
             <li class="header">SYSTEM</li>
@@ -89,12 +89,12 @@
 
             <li>
                 <a href="">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
+                    <i class="fa fa-cart-arrow-down"></i> <span>Active Transaction</span>
                 </a>
             </li>
             <li>
                 <a href="">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
+                    <i class="fa fa-cart-arrow-down"></i> <span>New Transaction</span>
                 </a>
             </li>
             
