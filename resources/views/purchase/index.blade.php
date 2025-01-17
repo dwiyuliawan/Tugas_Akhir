@@ -16,7 +16,7 @@
             <div class="box-header with-border">
                 <button onclick="addForm()" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i> New Transaction</button>
                 @empty(! session('purchase_id'))
-                <a href="{{ route('purchase_details.index') }}" class="btn btn-info btn-xs btn-flat"><i class="fa fa-pencil"></i> Active Transaction</a>
+                <a href="{{ route('purchase_details.index') }}" class="btn btn-info btn-xs btn-flat"><i class="fa fa-pencil"></i> Update Transaction</a>
                 @endempty
             </div>
             <div class="box-body table-responsive">

@@ -38,15 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/expenditures/data', [ExpenditureController::class, 'data'])->name('expenditures.data');
     Route::resource('/expenditures', ExpenditureController::class);
 
-
-    Route::get('/sales/{id}/create', [SaleController::class, 'create'])->name('sales.create');
-    Route::get('/sales/data', [SaleController::class, 'data'])->name('sales.data');
-    Route::resource('/sales', SaleController::class)
-        ->except('create');
-
-    Route::resource('/sale_details', SaleDetailController::class)
-        ->except('create', 'show', 'edit');
-
     Route::get('/purchases/data', [PurchaseController::class, 'data'])->name('purchases.data');
     Route::get('/purchases/{id}/create', [PurchaseController::class, 'create'])->name('purchases.create');
     Route::resource('/purchases', PurchaseController::class)
@@ -56,4 +47,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/purchase_details/loadform/{discount}/{total}', [PurchaseDetailController::class, 'loadForm'])->name('purchase_details.load_form');
     Route::resource('/purchase_details', PurchaseDetailController::class)
         ->except('create', 'show', 'edit');
+
+
+    Route::get('sales/data', [SaleController::class, 'data'])->name('sales.data');
+    Route::get('sales', [SaleController::class, 'index'])->name('sales.index');
+    Route::get('sales/{id}', [SaleController::class, 'show'])->name('sales.show');
+    Route::delete('sales/{id}', [SaleController::class, 'destroy'])->name('sales.destroy');
+
+    Route::get('transactions/new', [SaleController::class, 'create'])->name('transactions.new');
+    Route::post('transactions/simpan', [SaleController::class, 'store'])->name('transactions.simpan');
+    Route::get('/transactions/selesai', [SaleController::class, 'selesai'])->name('transactions.selesai');
+    Route::get('/transactions/nota-kecil', [SaleController::class, 'notaKecil'])->name('transactions.nota_kecil');
+    Route::get('/transactions/nota-besar', [SaleController::class, 'notaBesar'])->name('transactions.nota_besar');
+
+    Route::get('transactions/{id}/data', [SaleDetailController::class, 'data'])->name('transactions.data');
+    Route::get('transactions/loadform/{discout}/{total}/{diterima}', [SaleDetailController::class, 'loadForm'])->name('transactions.loadform');
+    Route::resource('/transactions', SaleDetailController::class)
+        ->except('show');
 });

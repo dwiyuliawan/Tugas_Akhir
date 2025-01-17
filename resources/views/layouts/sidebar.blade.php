@@ -55,17 +55,17 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('sales.index')}}">
                     <i class="fa fa-upload"></i> <span>Sale</span>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('transactions.index')}}">
                     <i class="fa fa-cart-arrow-down"></i> <span>Active Transaction</span>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('transactions.new')}}">
                     <i class="fa fa-cart-arrow-down"></i> <span>New Transaction</span>
                 </a>
             </li>

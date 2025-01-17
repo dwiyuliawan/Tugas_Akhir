@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('product_id');
             $table->integer('sale_price');
             $table->integer('qty');
+            $table->tinyInteger('discount')->default(0);
             $table->integer('subtotal');
             $table->timestamps();
         });
