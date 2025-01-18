@@ -18,7 +18,7 @@
             @foreach ($dataproduct as $produk)
                 <td class="text-center" style="border: 1px solid #333;">
                     <p>{{ $produk->product_name }} - Rp. {{ format_uang($produk->sale_price) }}</p>
-                    <img src="data:image/png;base64,{{ $barcode->getBarcodePNG($produk->product_code, 'C39+') }}" 
+                    <img src="data:image/png;base64,{{ $barcode->getBarcodePNG($produk->product_code, 'C39') }}" 
                         alt=""
                         width="180"
                         height="60">

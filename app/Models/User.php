@@ -64,4 +64,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function scopeIsNotAdmin($query)
+    {
+        return $query->where('level', '!=', 1);
+    }
 }

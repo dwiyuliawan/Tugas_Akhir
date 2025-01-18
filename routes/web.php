@@ -7,9 +7,12 @@ use App\Http\Controllers\SaleDetailController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', fn () => redirect()->route('login'));
 
@@ -64,4 +67,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('transactions/loadform/{discout}/{total}/{diterima}', [SaleDetailController::class, 'loadForm'])->name('transactions.loadform');
     Route::resource('/transactions', SaleDetailController::class)
         ->except('show');
+
+    Route::get('/report', [ReportController::class, 'index'])->name('report.index');
+    Route::get('/report/data/{awal}/{akhir}', [ReportController::class, 'data'])->name('report.data');
+    Route::get('/report/pdf/{awal}/{akhir}', [ReportController::class, 'exportPDF'])->name('report.export_pdf');
+
+    Route::get('/users/data', [UserController::class, 'data'])->name('users.data');
+    Route::resource('/users', UserController::class);
+
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
+    Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
 });

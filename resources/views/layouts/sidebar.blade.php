@@ -71,30 +71,19 @@
             </li>
             <li class="header">REPORT</li>
             <li>
-                <a href="">
+                <a href="{{route('report.index')}}">
                     <i class="fa fa-file-pdf-o"></i> <span>Report</span>
                 </a>
             </li>
             <li class="header">SYSTEM</li>
             <li>
-                <a href="">
+                <a href="{{route('users.index')}}">
                     <i class="fa fa-users"></i> <span>User</span>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{route('setting.index')}}">
                     <i class="fa fa-cogs"></i> <span>Pengaturan</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Active Transaction</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fa fa-cart-arrow-down"></i> <span>New Transaction</span>
                 </a>
             </li>
             
