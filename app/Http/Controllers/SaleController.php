@@ -32,6 +32,17 @@ class SaleController extends Controller
         $sales->save();
 
         session(['sale_id' => $sales->sale_id]);
+
+        // Tunggu 10 detik
+        sleep(10);
+
+        // Periksa apakah `pay` masih 0
+        $sale = Sale::find($sales->sale_id);
+
+        if ($sale && $sale->pay == 0) {
+            $sale->delete(); // Hapus jika `pay` masih 0
+        }
+
         return redirect()->route('transactions.index');
     }
 

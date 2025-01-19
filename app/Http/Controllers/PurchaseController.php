@@ -30,6 +30,7 @@ class PurchaseController extends Controller
         session(['purchase_id'=> $purchases->purchase_id]);
         session(['supplier_id'=> $purchases->supplier_id]);
 
+
         return redirect()->route('purchase_details.index');
     }
 
