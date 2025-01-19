@@ -22,6 +22,7 @@
                 </a>
             </li>
 
+            @if (auth()->user()->level == 1)
             <li class="header">MASTER</li>
             <li>
                 <a href="{{route('categories.index')}}" >
@@ -83,10 +84,21 @@
             </li>
             <li>
                 <a href="{{route('setting.index')}}">
-                    <i class="fa fa-cogs"></i> <span>Pengaturan</span>
+                    <i class="fa fa-cogs"></i> <span>Seetting</span>
                 </a>
             </li>
-            
+            @else
+            <li>
+                <a href="{{ route('transactions.index') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>Active Transaction</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('transactions.new') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>New Transaction</span>
+                </a>
+            </li>
+            @endif
         </ul>
     </section>
     <!-- /.sidebar -->

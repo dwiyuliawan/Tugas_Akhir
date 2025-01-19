@@ -16,14 +16,14 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>Categori</h3>
+                <h3>{{$categoris}}</h3>
 
                 <p>Total Categori</p>
             </div>
             <div class="icon">
                 <i class="fa fa-cube"></i>
             </div>
-            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('categories.index')}}" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -31,14 +31,14 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>Produck</h3>
+                <h3>{{$products}}</h3>
 
                 <p>Total Product</p>
             </div>
             <div class="icon">
                 <i class="fa fa-cubes"></i>
             </div>
-            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('products.index')}}" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -46,14 +46,14 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>Member</h3>
+                <h3>{{$members}}</h3>
 
                 <p>Member</p>
             </div>
             <div class="icon">
                 <i class="fa fa-id-card"></i>
             </div>
-            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('members.index')}}" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -61,14 +61,14 @@
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>Supplier</h3>
+                <h3>{{$suppliers}}</h3>
 
                 <p>Total Supplier</p>
             </div>
             <div class="icon">
                 <i class="fa fa-truck"></i>
             </div>
-            <a href="" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('suppliers.index')}}" class="small-box-footer">Look <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -79,7 +79,7 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Income Graph</h3>
+                <h3 class="box-title">Grafik Pendapatan {{ tanggal_indonesia($tanggal_awal, false) }} s/d {{ tanggal_indonesia($tanggal_akhir, false) }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -101,3 +101,39 @@
 </div>
 <!-- /.row (main row) -->
 @endsection
+
+@push('scripts')
+<!-- ChartJS -->
+<script src="{{ asset('AdminLTE-2/bower_components/chart.js/Chart.js') }}"></script>
+<script>
+$(function() {
+    // Get context with jQuery - using jQuery's .get() method.
+    var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+    // This will get the first returned node in the jQuery collection.
+    var salesChart = new Chart(salesChartCanvas);
+
+    var salesChartData = {
+        labels: {{ json_encode($data_tanggal) }},
+        datasets: [
+            {
+                label: 'Pendapatan',
+                fillColor           : 'rgba(60,141,188,0.9)',
+                strokeColor         : 'rgba(60,141,188,0.8)',
+                pointColor          : '#3b8bba',
+                pointStrokeColor    : 'rgba(60,141,188,1)',
+                pointHighlightFill  : '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: {{ json_encode($data_pendapatan) }}
+            }
+        ]
+    };
+
+    var salesChartOptions = {
+        pointDot : false,
+        responsive : true
+    };
+
+    salesChart.Line(salesChartData, salesChartOptions);
+});
+</script>
+@endpush

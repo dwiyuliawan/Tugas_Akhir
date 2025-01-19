@@ -85,9 +85,7 @@
                                 <div class="nama">{{ $item->name }}</div>
                                 <div class="telepon">{{ $item->phone_number }}</div>
                                 <div class="barcode text-left">
-                                    <img src="data:image/png;base64, {{ $barcode->getBarcodePNG("$item->member_code", 'QRCODE') }}" alt="{{$item->member_code}}"
-                                        height="45"
-                                        widht="45">
+                                    <img src="data:image/png;base64,{{ $barcode->getBarcodePNG("$item->member_code", 'QRCODE') }}" alt="qrcode" style="height: 100px; width: 100px;">
                                 </div>
                             </div>
                         </td>

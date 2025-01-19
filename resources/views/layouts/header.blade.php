@@ -2,10 +2,17 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        
-        <span class="logo-mini">GR</span>
+        @php
+            $words = explode(' ', $settings->company_name);
+            $word  = '';
+            foreach ($words as $w) {
+                $word .= $w[0];
+            }
+        @endphp
+
+        <span class="logo-mini">{{ $word }}</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>{{config('app.name')}}</b></span>
+        <span class="logo-lg"><b>{{ $settings->company_name }}</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -36,10 +43,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="" class="btn btn-default btn-flat">Profil</a>
+                                <a href="{{route('user.profil')}}" class="btn btn-default btn-flat">Profil</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat" onclick="$('#logout-form').submit()">Keluar</a>
+                                <a href="#" class="btn btn-default btn-flat" onclick="$('#logout-form').submit()">Close</a>
                             </div>
                         </li>
                     </ul>

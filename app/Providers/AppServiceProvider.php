@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('auth.login', function ($view) {
             $view->with('settings', Setting::first());
         });
+        
     }
 
     /**
