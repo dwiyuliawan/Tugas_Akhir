@@ -21,6 +21,17 @@ class SaleController extends Controller
 
     public function create()
     {
+         // Periksa apakah ada sesi pembelian yang belum selesai
+        if (session('sale_id')) {
+            // Ambil purchase_id dari sesi
+            $existingSale = Sale::find(session('sale_id'));
+
+            if ($existingSale && $existingSale->pay == 0) {
+                return redirect()->route('transactions.index')
+                    ->with('error', 'Selesaikan transaksi sebelumnya sebelum membuat yang baru.');
+            }
+        }
+
         $sales = new Sale();
         $sales->member_id = null;
         $sales->total_item  = 0;
@@ -33,17 +44,30 @@ class SaleController extends Controller
 
         session(['sale_id' => $sales->sale_id]);
 
-        // Tunggu 10 detik
-        sleep(10);
 
-        // Periksa apakah `pay` masih 0
-        $sale = Sale::find($sales->sale_id);
-
-        if ($sale && $sale->pay == 0) {
-            $sale->delete(); // Hapus jika `pay` masih 0
-        }
 
         return redirect()->route('transactions.index');
+    }
+
+    public function store(Request $request)
+    {
+        $sales = Sale::findOrFail($request->sale_id);
+        $sales->member_id = $request->member_id;
+        $sales->total_item = $request->total_item;
+        $sales->total_price = $request->total;
+        $sales->discount = $request->discount;
+        $sales->accepted = $request->diterima;
+        $sales->pay = $request->pay;
+        $sales->update();
+
+        $detail = SaleDetail::where('sale_id', $sales->sale_id)->get();
+        foreach ($detail as $item) {
+            $product = Product::find($item->product_id);
+            $product->stock -= $item->qty;
+            $product->update();
+        }
+
+        return redirect()->route('transactions.selesai');
     }
 
     public function show($id)
@@ -70,27 +94,6 @@ class SaleController extends Controller
             })
             ->rawColumns(['product_code'])
             ->make(true);
-    }
-
-    public function store(Request $request)
-    {
-        $sales = Sale::findOrFail($request->sale_id);
-        $sales->member_id = $request->member_id;
-        $sales->total_item = $request->total_item;
-        $sales->total_price = $request->total;
-        $sales->discount = $request->discount;
-        $sales->accepted = $request->diterima;
-        $sales->pay = $request->pay;
-        $sales->update();
-
-        $detail = SaleDetail::where('sale_id', $sales->sale_id)->get();
-        foreach ($detail as $item) {
-            $product = Product::find($item->product_id);
-            $product->stock -= $item->qty;
-            $product->update();
-        }
-
-        return redirect()->route('transactions.selesai');
     }
 
     public function data()

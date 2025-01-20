@@ -19,6 +19,16 @@ class PurchaseController extends Controller
 
     public function create($id)
     {
+        if (session('purchase_id')) {
+            // Ambil purchase_id dari sesi
+            $existingPurchase = Purchase::find(session('purchase_id'));
+
+            if ($existingPurchase && $existingPurchase->pay == 0) {
+                return redirect()->route('purchase_details.index')
+                    ->with('error', 'Selesaikan transaksi sebelumnya sebelum membuat yang baru.');
+            }
+        }
+
         $purchases = new Purchase();
         $purchases->supplier_id = $id;
         $purchases->total_item  = 0;
@@ -49,6 +59,9 @@ class PurchaseController extends Controller
             $product->stock += $item->qty;
             $product->update();
         }
+
+        // Hapus sesi setelah selesai
+        session()->forget(['purchase_id', 'supplier_id']);
 
         return redirect()->route('purchases.index');
     }

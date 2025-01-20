@@ -319,4 +319,14 @@
             })
     }
 </script>
+
+@if (session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Peringatan...',
+            text: "{{ session('error') }}"
+        });
+    </script>
+@endif
 @endpush

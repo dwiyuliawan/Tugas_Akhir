@@ -18,17 +18,18 @@ class SaleDetailController extends Controller
         $members = Member::orderBy('name')->get();
         $discount = Setting::first()->discount ?? 0;
 
-        //cek apakah ada transaksi yang sudah berjalan
         if ($sale_id = session('sale_id')) {
             $sales = Sale::find($sale_id);
             $member = $sales->member ?? new Member();
             return view('sale_detail.index', compact('products', 'members', 'discount', 'sale_id','member', 'sales'));
+        }else{
+            
+            if (auth()->user()->level == 1) {
+                return redirect()->route('transactions.new');
+            }else {
+                return redirect()->route('home');
+            }
         }
-
-        //mengecek user admin atau kasir
-        if (auth()->level == 1) {
-            return redirect()->route('transactions.new');
-        }else return redirect()->route('home');
     }
 
     public function store(Request $request)
